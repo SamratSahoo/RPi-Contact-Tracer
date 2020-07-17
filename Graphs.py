@@ -62,11 +62,11 @@ def getRSSIGraphs():
     for x in range(11):
         if x % 2 == 0:
             # RSSI Values for Boxes + No Boxes
-            noBoxRSSI = getRSSI('NoBox/noBox' + str(x) + '.csv')
-            boxRSSI = getRSSI('Box/box' + str(x) + '.csv')
+            noBoxRSSI = getRSSI('NoBoxData/noBox' + str(x) + '.csv')
+            boxRSSI = getRSSI('BoxData/box' + str(x) + '.csv')
             # Scan values for Boxes + No Boxes
-            noBoxScans = getIteration('NoBox/noBox' + str(x) + '.csv')
-            boxScans = getIteration('Box/box' + str(x) + '.csv')
+            noBoxScans = getIteration('NoBoxData/noBox' + str(x) + '.csv')
+            boxScans = getIteration('BoxData/box' + str(x) + '.csv')
             # Range Limit
             plt.ylim(min(noBoxRSSI) - 20, max(noBoxRSSI) + 20)
             # Get first 50 scans
@@ -87,7 +87,7 @@ def getRSSIGraphs():
             newBox = spl2(xBoxNew)
 
             # Plot Graph
-            plt.plot(xNoBoxNew, newNoBox, "-b", label="No Box")
+            plt.plot(xNoBoxNew, newNoBox, "-b", label="No BoxData")
             plt.plot(xBoxNew, newBox, "-r", label="Boxed")
             # Legend
             plt.legend(loc="upper right")
@@ -118,12 +118,12 @@ def getMeanGraph():
     # Get means for each distance (Boxed)
     for x in range(0, 11):
         if x % 2 == 0:
-            boxMean.append(getMean('Box/box' + str(x) + '.csv'))
+            boxMean.append(getMean('BoxData/box' + str(x) + '.csv'))
 
     # Get Means for each distance (No box)
     for x in range(0, 11):
         if x % 2 == 0:
-            noBoxMean.append(getMean('NoBox/noBox' + str(x) + '.csv'))
+            noBoxMean.append(getMean('NoBoxData/noBox' + str(x) + '.csv'))
     # Get Array for distances
     distances = [i * 2 for i in range(len(boxMean))]
     # Smoothen Graph
@@ -157,12 +157,12 @@ def getSDGraph():
     # Get SD for each distance (Boxed)
     for x in range(0, 11):
         if x % 2 == 0:
-            boxSD.append(getStandardDeviation('Box/box' + str(x) + '.csv'))
+            boxSD.append(getStandardDeviation('BoxData/box' + str(x) + '.csv'))
 
     # Get SD for each distance (No box)
     for x in range(0, 11):
         if x % 2 == 0:
-            noBoxSD.append(getStandardDeviation('NoBox/noBox' + str(x) + '.csv'))
+            noBoxSD.append(getStandardDeviation('NoBoxData/noBox' + str(x) + '.csv'))
     # Get Array for distances
     distances = [i * 2 for i in range(len(boxSD))]
     # Smoothen Graph
