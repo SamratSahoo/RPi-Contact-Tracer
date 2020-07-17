@@ -70,12 +70,12 @@ def getRSSIGraphs():
             # Range Limit
             plt.ylim(min(noBoxRSSI) - 20, max(noBoxRSSI) + 20)
             # Get first 50 scans
-            plt.xlim(0, 50)
+            plt.xlim(0, 51)
             # X scale
-            plt.xticks(np.arange(0, 50, 2.0))
+            plt.xticks(np.arange(0, 51, 2.0))
             # Axes Labels
             plt.xlabel('Scan Number')
-            plt.ylabel('RSSI Value')
+            plt.ylabel('RSSI Value (dBm)')
             # Title
             plt.title(str(x) + " Meters RSSI Values")
             # Smoothen Graph
@@ -143,7 +143,7 @@ def getMeanGraph():
     plt.legend(loc="upper right")
     # Labels
     plt.xlabel('Distance (Meters)')
-    plt.ylabel('RSSI Value')
+    plt.ylabel('RSSI Value (dBm)')
 
     # Add Title
     plt.title("Mean RSSI Values")
@@ -191,4 +191,4 @@ def getSDGraph():
 
 
 if __name__ == '__main__':
-    getRSSIGraphs()
+    getMeanGraph()
