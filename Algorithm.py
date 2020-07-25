@@ -8,24 +8,24 @@ ENVIRONMENT_CONSTANT = 1
 # Average RSSI value at d0
 A0 = -50
 # Device Constant for Normalization
-DEVICE_CONSTANT = 1 / 100
+DEVICE_CONSTANT = 0.5
 
 
 # Modified Log Normal Shadowing Model
 def getDistance(rssi):
     try:
         x = float((rssi - A0) / (-10 * PATH_LOSS))
-        distance = (math.pow(10, x) * 100) + ENVIRONMENT_CONSTANT
+        distance = (math.pow(10, x)) + ENVIRONMENT_CONSTANT
         return distance * DEVICE_CONSTANT
     except ZeroDivisionError:
         print("Path Loss cannot be Zero")
 
 
 def createGraph():
-    distanceVals = [getDistance(x) for x in range(-100, 0)]
-    rssiVals = [x for x in range(-100, 0)]
+    distanceVals = [getDistance(x) for x in range(-101, 0)]
+    rssiVals = [x for x in range(-101, 0)]
     plt.plot(distanceVals, rssiVals, color="red", label="Disease Danger Zone")
-    plt.plot(distanceVals[:38], rssiVals[:38], color="blue", label="Disease Safe Zone")
+    plt.plot(distanceVals[:30], rssiVals[:30], color="blue", label="Disease Safe Zone")
     plt.title("Modified Log Normal Shadowing Algorithm")
     plt.xlabel('Distance (Meters)')
     plt.ylabel('RSSI Values (dBm)')
